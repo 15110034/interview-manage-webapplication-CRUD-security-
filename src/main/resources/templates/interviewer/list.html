@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<nav th:replace="layout :: nav-admin"></nav>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-10 col-md-offset-1">
+            <div class="row search">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <form role="form" action="/interviewer/search" method="get">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" th:name="s"/>
+                            <span class="input-group-btn">
+                <button class="btn btn-default btn-sm" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+              </span>                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Panel Heading</h3>
+                        </div>
+                        <div class="col col-xs-6 text-right">
+                            <button type="button" class="btn btn-sm btn-primary btn-create"><a class="btn-primary btn-create" href="/interviewer/new">Create New</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered table-list" th:if="${not #lists.isEmpty(interviewers)}">
+                        <thead>
+                        <tr>
+                            <th><em class="fa fa-cog"></em></th>
+                            <th class="hidden-xs">ID</th>
+                            <th>User</th>
+                            <th>Email</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="interviewer : ${interviewers}">
+                            <td align="center">
+                                <a th:href="@{'/interviewer/' + ${interviewer.id} + '/update'}" class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
+                                <a th:if="${#lists.isEmpty(interviewer.interviewResults)}" th:href="@{'/interviewer/' + ${interviewer.id} + '/delete'}" class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a>
+                           </td>
+                            <td th:text="${interviewer.id}" class="hidden-xs">1</td>
+                            <td th:text="${interviewer.user.accountFsoft}"></td>
+                            <td th:text="${interviewer.email}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col col-xs-4">Page 1 of 5
+                        </div>
+                        <div class="col col-xs-8">
+                            <ul class="pagination hidden-xs pull-right">
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                            </ul>
+                            <ul class="pagination visible-xs pull-right">
+                                <li><a href="#">«</a></li>
+                                <li><a href="#">»</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div></div></div>
+</body>
+</html>

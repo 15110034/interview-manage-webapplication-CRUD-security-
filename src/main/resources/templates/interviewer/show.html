@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<nav th:replace="layout :: nav-admin"></nav>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title" th:text="${interviewer.user.accountFsoft}">Sheena Shrestha</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-md">
+                            <table class="table table-user-information">
+                                <tbody>
+                                <tr>
+
+                                    <td class="bold">Account Fsoft:</td>
+                                    <td th:text="${interviewer.user.accountFsoft}">Programming</td>
+                                </tr>
+                                <tr>
+                                    <td class="fbold">Email:</td>
+                                    <td th:text="${interviewer.email}">HCM@UTE</td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Date of Birth</td>
+                                    <td th:text="${candidate.birthDay}">01/24/1988</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="bold">Home Address</td>
+                                    <td th: text="${candidate.address}">Kathmandu,Nepal</td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Email</td>
+                                    <td th:text="${candidate.email}"><a href="'mailto:' + ${candidate.email}'">info@support.com</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Phone Number</td>
+                                    <td th:text="${candidate.phone}">555-4567-890(Mobile)>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="font-weight-bold">Position</td>
+                                    <td th:text="${candidate.position.name}"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold">Skills:</td>
+                                    <td>
+                                        <span th:each="skill : ${candidate.skills}" class="badge badge-pill badge-info" th:text="${skill.name}">Info</span>
+                                        <span><a th:href="@{'/candidate/' + ${candidate.id} + '/skill'}" data-original-title="Add Skill" data-toggle="tooltip" type="button" class="btn btn-sm"><i class="glyphicon glyphicon-plus"></i></a></span>
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                    <span class="pull-right">
+                            <a th:href="@{'/candidate/' + ${candidate.id} + '/update'}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+
+                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

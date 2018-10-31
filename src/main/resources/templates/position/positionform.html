@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List Candidate</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav th:replace="layout :: nav-admin"></nav>
+<div class="container main-content form">
+    <div class="row">
+        <form action="#" th:action="@{/position/save}" th:object="${position}"
+              method="POST" novalidate="novalidate">
+            <input type="hidden" th:field="*{id}" />
+            <div class="form-group">
+                <label>Code</label>
+                <input type="text" class="form-control"
+                       th:field="*{code}" />
+            </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control"
+                       th:field="*{name}" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div><!-- /.container -->
+</body>
+</html>

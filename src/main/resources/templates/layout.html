@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Interview Manager System</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--<script src="/webjars/jquery/1.11.1/jquery.min.js"></script>-->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <style type="text/css">
+        .giang
+        {
+
+            background: blue;
+            color:red;
+            font-size: 50px;
+            float:right;
+        }
+    </style>
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-default sidebar" role="navigation" th:fragment="nav-admin">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button"
+                    class="navbar-toggle"
+                    data-toggle="collapse"
+                    data-target="#bs-sidebar-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/candidate">Candidate<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+                <li >
+                    <a href="/interviewer">Interviewer</a>
+                </li>
+                <li >
+                    <a href="/position" >Position</a>
+                </li>
+                <li >
+                    <a href="/skill" >Skill</a>
+                </li>
+                <li >
+                    <a href="/interviewresult" >Interview Result</a>
+                </li>
+                <li >
+                    <a href="/interviewschedule" >Interview Schedule</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<nav th:fragment="header"
+     class="navbar navbar-inverse navbar-fixed-top" >
+    <div class="container" >
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar" id="nav-autohide">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/}">Interview Manager System</a>
+
+        </div>
+    </div>
+</nav>
+<nav th:fragment="header-admin"
+     class="navbar navbar-inverse navbar-fixed-top" id="menu-nav">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar" id="nav-autohide-admin">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/}">Interview Manager System</a>
+
+        </div>
+        <ul class="nav navbar-nav nav-not-hide">
+            <li th:classappend="${#httpServletRequest.getRequestURI() == '/position' ? 'active':''}"><a href="/position">Position</a></li>
+            <li th:classappend="${#httpServletRequest.getRequestURI() == '/candidate' ? 'active':''}"><a href="/candidate">Candidate</a></li>
+            <li th:classappend="${#httpServletRequest.getRequestURI() == '/interviewer' ? 'active':''}"><a href="/interviewer">Interviewer</a></li>
+            <li th:classappend="${#httpServletRequest.getRequestURI() == '/interviewSchedule' ? 'active':''}"><a href="/interviewSchedule">Interview Schedule</a></li>
+            <li th:classappend="${#httpServletRequest.getRequestURI() == '/interviewResult' ? 'active':''}"><a href="/interviewResult">Interview Result</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+            <form class="form-inline" action="#" th:action="@{/logout}" method="POST">
+                <label class= "label label-default" sec:authentication="name"></label>
+                <button class="btn btn-primary" type="submit">Logout</button>
+            </form>
+        </ul>
+    </div>
+</nav>
+<h1>Main content</h1>
+
+<footer th:fragment="footer" class="container">
+
+</footer>
+
+</body>
+<script>
+    $(document).ready(function(){
+        $("#nav-autohide").click(function(){
+            $("#menu-nav").toggle();
+        });
+    });
+</script>
+</html>

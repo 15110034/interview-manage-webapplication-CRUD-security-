@@ -1,0 +1,52 @@
+.main-content {
+	min-height: 500px;
+	max-width: 700px;
+	margin-top: 70px;
+}
+
+.list {
+	max-width: 800px;
+}
+
+.form {
+	max-width: 450px;
+}
+
+.row {
+	margin-top: 30px;
+}
+
+.table th, td {
+   text-align: center;   
+}
+
+.field-error {
+	border: 1px solid #ff0000;
+	margin-bottom: 10px;	
+}
+.giang
+{
+	color:Red;
+	font-size: 50px;
+}
+.container.main-content.list{
+	max-width: 90vw;
+}
+
+.btn-primary {
+	margin: 8px 0px;
+	color: #fff;
+	background-color: #337ab7;
+	border-color: #2e6da4;
+}
+	.col-md-9 {
+		width: 75%;
+		position: absolute;
+		left: 12.5%;
+	}
+
+.input-group-addon, .input-group-btn {
+	width: 1%;
+	white-space: nowrap;
+	vertical-align: top;
+}
